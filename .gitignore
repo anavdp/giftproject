@@ -46,3 +46,8 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle
+.classpath
+.project
+.settings/org.eclipse.buildship.core.prefs
+.vscode/launch.json
+.vscode/settings.json
