@@ -1,5 +1,6 @@
 package com.giv.giftproject.domain.model;
 import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,7 +23,6 @@ public class User {
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
-    @Temporal(value = TemporalType.DATE)
     private LocalDate birthdate;
     @Column
     private String phoneNumber;
