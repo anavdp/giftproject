@@ -51,3 +51,15 @@ gradle-app.setting
 .settings/org.eclipse.buildship.core.prefs
 .vscode/launch.json
 .vscode/settings.json
+/.idea/.gitignore
+/.idea/sonarlint/issuestore/2/5/2545beb89ea196109a87de805297deaea3bf6107
+/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+/.idea/compiler.xml
+/.idea/dataSources.xml
+/.idea/dataSources/e776259c-90dd-4265-ad54-e39e0b928e84.xml
+/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e392191aeae700a35
+/.idea/gradle.xml
+/.idea/sonarlint/issuestore/index.pb
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/vcs.xml
