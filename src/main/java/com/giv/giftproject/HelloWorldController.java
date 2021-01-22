@@ -17,6 +17,7 @@ public class HelloWorldController {
     public String helloWorld() {
         //llamar al servicio
         final User user = userService.buscarUsuario(1);
+
         return "helloWorld";
     }
 }
