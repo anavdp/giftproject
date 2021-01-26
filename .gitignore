@@ -67,3 +67,4 @@ gradle-app.setting
 .settings/org.eclipse.jdt.core.prefs
 src/main/resources/application-local.properties
 bin/
+obj
