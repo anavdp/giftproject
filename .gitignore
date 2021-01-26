@@ -66,5 +66,6 @@ gradle-app.setting
 /.idea/sonarlint/issuestore/4/5/45ce0f3de3c47a467e83313c2939db587c1c6fdd
 .settings/org.eclipse.jdt.core.prefs
 src/main/resources/application-local.properties
-bin/
+bin
 obj
+config
