@@ -1,13 +1,10 @@
 package com.giv.giftproject.domain.model;
 import java.time.LocalDate;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.giv.giftproject.domain.enums.Gender;
 import com.giv.giftproject.domain.enums.Pronoun;

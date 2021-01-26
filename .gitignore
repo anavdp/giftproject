@@ -69,3 +69,6 @@ gradle-app.setting
 /.idea/sonarlint/issuestore/a/0/a06873ea2875403103f0624c2eed0421e2354e6f
 /.idea/sonarlint/issuestore/e/4/e42418046742557ce320775f6ec5d28577be6073
 /.idea/dataSources/e776259c-90dd-4265-ad54-e39e0b928e84/storage_v2/_src_/schema/information_schema.FNRwLQ.meta
+.settings/org.eclipse.jdt.core.prefs
+src/main/resources/application-local.properties
+bin/
