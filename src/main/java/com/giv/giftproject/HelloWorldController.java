@@ -21,7 +21,7 @@ public class HelloWorldController {
     }
 
     
-  @GetMapping(value="/user/{id}")
+    @GetMapping(value="/user/{id}")
     public String getUserById(@PathVariable(value = "id") Integer id, Model model) {
         final User user = userService.buscarUsuario(id);
         model.addAttribute("title", "Usuario");
