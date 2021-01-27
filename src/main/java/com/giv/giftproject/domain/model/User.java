@@ -1,34 +1,52 @@
 package com.giv.giftproject.domain.model;
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.*;
 
 import com.giv.giftproject.domain.enums.Gender;
 import com.giv.giftproject.domain.enums.Pronoun;
 
 @Entity
 public class User {
+
     @Id
+    @GeneratedValue
     private int id;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String lastname;
+
     @Column(nullable = false)
     private String email;
+
     @Column(nullable = false)
     private LocalDate birthdate;
+
     @Column
     private String phoneNumber;
+
     @Column
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
+
     @Column
     @Enumerated(value = EnumType.STRING)
     private Pronoun pronoun;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private Date creationDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modificationDate;
+
+    @OneToMany(mappedBy = "userB")
+    private List<Relationship> relationships;
+
 
     public User(String name, String lastname, String email, LocalDate birthdate, String phoneNumber, Gender gender,
             Pronoun pronoun) {
@@ -39,6 +57,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.pronoun = pronoun;
+        this.creationDate = new Date();
     }
     
     public User(){}
