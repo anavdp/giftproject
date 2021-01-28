@@ -1,80 +1,29 @@
-package com.giv.giftproject.domain.model;
+package com.giv.giftproject.domain.model.dto;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import com.giv.giftproject.domain.enums.Gender;
 import com.giv.giftproject.domain.enums.Pronoun;
 
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue
-    private int id;
-
-    @Column(nullable = false)
+public class UserDTO {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @Column(nullable = false)
     @NotBlank(message = "Lastname is mandatory")
     private String lastname;
 
-    @Column(nullable = false)
     @NotBlank(message = "Email is mandatory")
     @Email(message = "Please provide a valid email")
     private String email;
 
-    @Column(nullable = false)
     @NotBlank(message = "Birthday is mandatory")
     private LocalDate birthdate;
 
-    @Column
     private String phoneNumber;
 
-    @Column
-    @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    @Column
-    @Enumerated(value = EnumType.STRING)
     private Pronoun pronoun;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
-    private Date creationDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificationDate;
-
-    @OneToMany(mappedBy = "userB")
-    private List<Relationship> relationships;
-
-
-    public User(String name, String lastname, String email, LocalDate birthdate, String phoneNumber, Gender gender,
-            Pronoun pronoun) {
-        this.name = name;
-        this.lastname = lastname;
-        this.email = email;
-        this.birthdate = birthdate;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.pronoun = pronoun;
-        this.creationDate = new Date();
-    }
-    
-    public User(){}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
