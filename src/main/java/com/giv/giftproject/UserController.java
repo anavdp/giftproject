@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping(value="/user")
-    public String createUser(@RequestBody() @Valid UserDTO user, Model model) {
+    public String createUser(@RequestBody @Valid UserDTO user, Model model) {
         userService.createUser(user);
         model.addAttribute("title", "Usuario");
         model.addAttribute("user", user);

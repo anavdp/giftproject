@@ -29,7 +29,6 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    @NotBlank(message = "Birthday is mandatory")
     private LocalDate birthdate;
 
     @Column

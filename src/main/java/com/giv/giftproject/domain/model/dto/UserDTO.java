@@ -16,7 +16,6 @@ public class UserDTO {
     @Email(message = "Please provide a valid email")
     private String email;
 
-    @NotBlank(message = "Birthday is mandatory")
     private LocalDate birthdate;
 
     private String phoneNumber;
