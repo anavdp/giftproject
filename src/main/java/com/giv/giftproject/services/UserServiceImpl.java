@@ -5,6 +5,8 @@ import com.giv.giftproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -21,8 +23,8 @@ public class UserServiceImpl implements UserService {
         User user = new User(
             dto.getName(), 
             dto.getLastname(), 
-            dto.getEmail(), 
-            dto.getBirthdate(), 
+            dto.getEmail(),
+                LocalDate.parse(dto.getBirthdate()),
             dto.getPhoneNumber(), 
             dto.getGender(), 
             dto.getPronoun()

@@ -7,10 +7,7 @@ import com.giv.giftproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -18,18 +15,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping(value="/")
+    public String userForm(Model model) {
+        model.addAttribute("user", new UserDTO());
+        return "newUser";
+    }
+
     @GetMapping(value="/user/{id}")
     public String getUserById(@PathVariable(value = "id") Integer id, Model model) {
         final User user = userService.searchUser(id);
-        model.addAttribute("title", "Usuario");
+        model.addAttribute("title", "User");
         model.addAttribute("user", user);
         return "user";
     }
 
-    @PostMapping(value="/user")
-    public String createUser(@RequestBody @Valid UserDTO user, Model model) {
+    @PostMapping(value="/users")
+    public String createUser(@ModelAttribute @Valid UserDTO user, Model model) {
         userService.createUser(user);
-        model.addAttribute("title", "Usuario");
+        model.addAttribute("title", "User");
         model.addAttribute("user", user);
         return "user";
     }

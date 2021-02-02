@@ -19,15 +19,15 @@ public class UserDTO {
     @Email(message = "Please provide a valid email")
     private String email;
 
-    @Past
-    @NotNull
-    private LocalDate birthdate;
+
+    private String birthdate;
 
     private String phoneNumber;
 
     private Gender gender;
 
     private Pronoun pronoun;
+
 
     public String getName() {
         return name;
@@ -53,11 +53,11 @@ public class UserDTO {
         this.email = email;
     }
 
-    public LocalDate getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 

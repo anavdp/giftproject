@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+</head>
+<body>
+<form action="#"  th:action="@{/users}" th:object="${user}"  method="post" id="frmUser">
+    <input id="name" th:field="*{name}" placeholder="Name" required type="text">
+    <input id="lastname" th:field="*{lastname}" placeholder="Lastname" required type="text">
+    <input th:field="*{email}" placeholder="Email" required type="email">
+    <input th:field="*{birthdate}" required type="date">
+    <input th:field="*{phoneNumber}" placeholder="Phone number" type="text">
+    <select th:field="*{gender}">
+        <option value="">Select one</option>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <option value="AGENDER">Agender</option>
+        <option value="NON_BINARY">Non binary</option>
+        <option value="OTHER">Other</option>
+    </select>
+    <select th:field="*{pronoun}">
+        <option value="">Select one</option>
+        <option value="HE">He</option>
+        <option value="SHE">She</option>
+        <option value="THEY">They</option>
+    </select>
+    <input type="submit" value="Sign Up">
+</form>
+</body>
+</html>
