@@ -65,3 +65,4 @@ gradle-app.setting
 src/main/resources/application-local.properties
 bin/
 obj
+/.idea/uiDesigner.xml
