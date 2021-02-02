@@ -1,5 +1,4 @@
 package com.giv.giftproject;
-
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
