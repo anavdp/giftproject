@@ -1,15 +1,16 @@
 package com.giv.giftproject.domain.model;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+
+import com.giv.giftproject.domain.enums.Gender;
+import com.giv.giftproject.domain.enums.Pronoun;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-
-import com.giv.giftproject.domain.enums.Gender;
-import com.giv.giftproject.domain.enums.Pronoun;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class User {
