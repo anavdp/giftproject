@@ -5,12 +5,13 @@
     <title>Sign up</title>
 </head>
 <body>
+<h1>NEW USER</h1>
 <form action="#"  th:action="@{/users}" th:object="${user}"  method="post" id="frmUser">
-    <input id="name" th:field="*{name}" placeholder="Name" required type="text">
-    <input id="lastname" th:field="*{lastname}" placeholder="Lastname" required type="text">
-    <input th:field="*{email}" placeholder="Email" required type="email">
-    <input th:field="*{birthdate}" required type="date">
-    <input th:field="*{phoneNumber}" placeholder="Phone number" type="text">
+    <input id="name" th:field="*{name}" placeholder="Name" required type="text"><br>
+    <input id="lastname" th:field="*{lastname}" placeholder="Lastname" required type="text"><br>
+    <input th:field="*{email}" placeholder="Email" required type="email"><br>
+    <input th:field="*{birthdate}" required type="date"><br>
+    <input th:field="*{phoneNumber}" placeholder="Phone number" type="text"><br>
     <select th:field="*{gender}">
         <option value="">Select one</option>
         <option value="MALE">Male</option>
@@ -18,13 +19,13 @@
         <option value="AGENDER">Agender</option>
         <option value="NON_BINARY">Non binary</option>
         <option value="OTHER">Other</option>
-    </select>
-    <select th:field="*{pronoun}">
+    </select><br>
+    <select th:field="*{pronoun}"><br>
         <option value="">Select one</option>
         <option value="HE">He</option>
         <option value="SHE">She</option>
         <option value="THEY">They</option>
-    </select>
+    </select><br><br>
     <input type="submit" value="Sign Up">
 </form>
 </body>

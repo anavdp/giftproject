@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value="/")
+    @GetMapping(value="/signup")
     public String userForm(Model model) {
         model.addAttribute("user", new UserDTO());
         return "newUser";
@@ -38,7 +38,7 @@ public class UserController {
         userService.createUser(user);
         model.addAttribute("title", "User");
         model.addAttribute("user", user);
-        return "user";
+        return "login";
     }
 
 
