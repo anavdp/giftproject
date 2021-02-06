@@ -64,5 +64,7 @@ gradle-app.setting
 .settings/org.eclipse.jdt.core.prefs
 src/main/resources/application-local.properties
 bin/
-obj
 /.idea/uiDesigner.xml
+/.idea/sqldialects.xml
+obj
+

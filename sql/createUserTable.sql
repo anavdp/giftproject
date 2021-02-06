@@ -1,10 +1,14 @@
-CREATE TABLE `gift_project`.`USER` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `NAME` VARCHAR(45) NOT NULL,
-  `LASTNAME` VARCHAR(45) NOT NULL,
-  `BIRTHDATE` DATE NOT NULL,
-  `EMAIL` VARCHAR(45) NOT NULL,
-  `PHONE_NUMBER` VARCHAR(45) NULL,
-  `GENDER` VARCHAR(45) NULL,
-  `PRONOUN` VARCHAR(45) NULL,
-  PRIMARY KEY (`ID`));
+create table user
+(
+    `id`                integer      not null,
+    `birthdate`         date         not null,
+    `creation_date`     datetime     not null,
+    `email`             varchar(255) not null,
+    `gender`            varchar(255),
+    `lastname`          varchar(255) not null,
+    `modification_date` datetime,
+    `name`              varchar(255) not null,
+    `phone_number`      varchar(255),
+    `pronoun`           varchar(255),
+    primary key (id)
+);
