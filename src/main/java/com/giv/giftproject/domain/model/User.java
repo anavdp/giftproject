@@ -71,7 +71,9 @@ public class User {
         this.creationDate = new Date();
     }
     
-    public User(){}
+    public User(){
+        this.creationDate = new Date();
+    }
 
     public int getId() {
         return id;

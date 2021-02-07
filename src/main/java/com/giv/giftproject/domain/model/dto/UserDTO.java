@@ -82,5 +82,5 @@ public class UserDTO {
     public void setPronoun(Pronoun pronoun) {
         this.pronoun = pronoun;
     }
-    
+
 }
