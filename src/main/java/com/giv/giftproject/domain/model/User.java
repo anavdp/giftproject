@@ -2,7 +2,6 @@ package com.giv.giftproject.domain.model;
 
 import com.giv.giftproject.domain.enums.Gender;
 import com.giv.giftproject.domain.enums.Pronoun;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -27,7 +26,7 @@ public class User {
     @NotBlank(message = "Lastname is mandatory")
     private String lastname;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     @NotBlank(message = "Email is mandatory")
     @Email(message = "Please provide a valid email")
     private String email;
