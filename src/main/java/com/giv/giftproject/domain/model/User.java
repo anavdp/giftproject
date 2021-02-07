@@ -1,15 +1,26 @@
 package com.giv.giftproject.domain.model;
 
-import com.giv.giftproject.domain.enums.Gender;
-import com.giv.giftproject.domain.enums.Pronoun;
-import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+
+import com.giv.giftproject.domain.enums.Gender;
+import com.giv.giftproject.domain.enums.Pronoun;
 
 @Entity
 public class User {
@@ -57,6 +68,8 @@ public class User {
     @OneToMany(mappedBy = "userB")
     private List<Relationship> relationships;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Password password;
 
     public User(){
         this.creationDate = new Date();
