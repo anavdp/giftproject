@@ -49,7 +49,7 @@ public class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private Date creationDate;
+    private final Date creationDate;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificationDate;
@@ -58,18 +58,6 @@ public class User {
     private List<Relationship> relationships;
 
 
-    public User(String name, String lastname, String email, LocalDate birthdate, String phoneNumber, Gender gender,
-            Pronoun pronoun) {
-        this.name = name;
-        this.lastname = lastname;
-        this.email = email;
-        this.birthdate = birthdate;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.pronoun = pronoun;
-        this.creationDate = new Date();
-    }
-    
     public User(){
         this.creationDate = new Date();
     }
