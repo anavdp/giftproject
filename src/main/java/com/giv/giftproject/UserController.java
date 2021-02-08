@@ -1,5 +1,6 @@
 package com.giv.giftproject;
 
+import com.giv.giftproject.domain.model.Password;
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.domain.model.dto.UserDTO;
 import com.giv.giftproject.services.UserService;
@@ -52,6 +53,7 @@ public class UserController {
     public User convertDTOtoEntity(UserDTO userDTO){
         User user = modelMapper.map(userDTO, User.class);
         user.setBirthdate(LocalDate.parse(userDTO.getBirthdate()));
+        user.setPassword(new Password(user, userDTO.getPassword()));
         return user;
     }
 

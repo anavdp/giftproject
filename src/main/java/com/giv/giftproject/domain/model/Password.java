@@ -20,4 +20,17 @@ public class Password {
     @Column(nullable = false)
     private String encryptedPassword;
 
+    public Password(User user, String encryptedPassword) {
+        this.user = user;
+        this.encryptedPassword = encryptedPassword;
+    }
+
+    public String getEncryptedPassword() {
+        return encryptedPassword;
+    }
+
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
+    }
+
 }

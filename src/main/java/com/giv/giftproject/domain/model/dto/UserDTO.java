@@ -3,7 +3,6 @@ package com.giv.giftproject.domain.model.dto;
 import com.giv.giftproject.domain.enums.Gender;
 import com.giv.giftproject.domain.enums.Pronoun;
 import com.giv.giftproject.security.ValidPassword;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 

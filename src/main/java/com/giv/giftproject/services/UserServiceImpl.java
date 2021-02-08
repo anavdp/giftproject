@@ -2,6 +2,7 @@ package com.giv.giftproject.services;
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
 	public User createUser(User user) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encryptedPassword = encoder.encode(user.getPassword().getEncryptedPassword());
+        user.getPassword().setEncryptedPassword(encryptedPassword);
 		return userRepository.save(user);
 	}
 }

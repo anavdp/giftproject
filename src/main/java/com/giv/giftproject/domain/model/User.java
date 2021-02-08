@@ -138,5 +138,13 @@ public class User {
     public void setPronoun(Pronoun pronoun) {
         this.pronoun = pronoun;
     }
+
+    public Password getPassword() {
+        return password;
+    }
+
+    public void setPassword(Password password) {
+        this.password = password;
+    }
     
 }
