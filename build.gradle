@@ -24,6 +24,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	compile 'org.modelmapper:modelmapper:2.3.9'
 	runtimeOnly "mysql:mysql-connector-java"
+	compile group: 'org.passay', name: 'passay', version: '1.6.0'
 }
 
 test {

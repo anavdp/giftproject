@@ -17,7 +17,6 @@ public class UserDTO {
     @Email(message = "Please provide a valid email")
     private String email;
 
-
     private String birthdate;
 
     private String phoneNumber;
