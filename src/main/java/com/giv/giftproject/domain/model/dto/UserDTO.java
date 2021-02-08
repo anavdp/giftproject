@@ -2,6 +2,7 @@ package com.giv.giftproject.domain.model.dto;
 
 import com.giv.giftproject.domain.enums.Gender;
 import com.giv.giftproject.domain.enums.Pronoun;
+import com.giv.giftproject.security.ValidPassword;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -24,6 +25,9 @@ public class UserDTO {
     private Gender gender;
 
     private Pronoun pronoun;
+
+    @ValidPassword
+    private String password;
 
 
     public String getName() {
@@ -82,4 +86,11 @@ public class UserDTO {
         this.pronoun = pronoun;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
