@@ -1,10 +1,12 @@
 package com.giv.giftproject;
 
-import com.giv.giftproject.domain.model.Password;
+import javax.validation.Valid;
+
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.domain.model.dto.UserDTO;
+import com.giv.giftproject.services.Converter;
 import com.giv.giftproject.services.UserService;
-import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 @Controller
 public class UserController {
 
@@ -24,7 +22,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private ModelMapper modelMapper;
+    private Converter converter;
 
     @GetMapping(value="/signup")
     public String userForm(Model model) {
@@ -42,25 +40,13 @@ public class UserController {
 
     @PostMapping(value="/users")
     public String createUser(@ModelAttribute @Valid UserDTO userDTO, Model model) {
-        User user = convertDTOtoEntity(userDTO);
+        User user = converter.convertDTOtoEntity(userDTO);
         user = userService.createUser(user);
-        userDTO = convertEntityToDTO(user);
+        userDTO = converter.convertEntityToDTO(user);
         model.addAttribute("title", "User");
         model.addAttribute("user", userDTO);
         return "login";
     }
 
-    public User convertDTOtoEntity(UserDTO userDTO){
-        User user = modelMapper.map(userDTO, User.class);
-        user.setBirthdate(LocalDate.parse(userDTO.getBirthdate()));
-        user.setPassword(new Password(user, userDTO.getPassword()));
-        return user;
-    }
 
-    public UserDTO convertEntityToDTO(User user){
-        UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        userDTO.setBirthdate(user.getBirthdate().format(dtf));
-        return userDTO;
-    }
 }

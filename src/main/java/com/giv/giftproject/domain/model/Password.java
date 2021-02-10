@@ -19,7 +19,10 @@ public class Password {
     
     @Column(nullable = false)
     private String encryptedPassword;
-
+    
+    public Password() {
+    }
+    
     public Password(User user, String encryptedPassword) {
         this.user = user;
         this.encryptedPassword = encryptedPassword;

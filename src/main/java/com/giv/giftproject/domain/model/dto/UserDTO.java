@@ -1,12 +1,25 @@
 package com.giv.giftproject.domain.model.dto;
 
-import com.giv.giftproject.domain.enums.Gender;
-import com.giv.giftproject.domain.enums.Pronoun;
-import com.giv.giftproject.security.ValidPassword;
+import java.util.Collection;
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class UserDTO {
+import com.giv.giftproject.domain.enums.Gender;
+import com.giv.giftproject.domain.enums.Pronoun;
+import com.giv.giftproject.security.ValidPassword;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class UserDTO implements UserDetails {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     @NotBlank(message = "Name is mandatory")
     private String name;
 
@@ -28,8 +41,7 @@ public class UserDTO {
     @ValidPassword
     private String password;
 
-
-    public String getName() {
+	public String getName() {
         return name;
     }
 
@@ -91,5 +103,35 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
