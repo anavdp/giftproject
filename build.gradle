@@ -25,6 +25,7 @@ dependencies {
 	compile 'org.modelmapper:modelmapper:2.3.9'
 	runtimeOnly "mysql:mysql-connector-java"
 	compile group: 'org.passay', name: 'passay', version: '1.6.0'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 }
 
 test {
