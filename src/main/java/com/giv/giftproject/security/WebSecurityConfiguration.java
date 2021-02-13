@@ -7,32 +7,40 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private MyUserDetailService myUserDetailService;
+
+
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/resources/**", "/login", "/signup", "/signin").permitAll()
+                .antMatchers("/resources/**", "/login", "/signup", "/signin", "/newUser").permitAll()
                 .anyRequest().authenticated().and().formLogin().loginPage("/login").failureUrl("/login?error");
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailService);
+        auth.inMemoryAuthentication()
+                .passwordEncoder(passwordEncoder)
+                .and()
+                .userDetailsService(myUserDetailService);
     }
 
-    @SuppressWarnings("deprecation")
+
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean

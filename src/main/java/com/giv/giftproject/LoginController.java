@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,12 +40,15 @@ public class LoginController {
     public AuthenticationResponse createToken(@RequestParam Map<String,String> ar) throws Exception {
         final String username = ar.get("username");
         final String password = ar.get("password");
+
         final AuthenticationRequest authenticationRequest = new AuthenticationRequest(username, password);
         try {
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword());
             authenticationManager.authenticate(authentication);
         } catch (BadCredentialsException e) {
             throw new Exception("Invalid username or password", e);
+        } catch (Exception e) {
+            throw new Exception("Invalid authentication",e);
         }
         UserDetails userDetails = myUserDetailService.loadUserByUsername(authenticationRequest.getUsername());
         String token = jwtService.createToken(userDetails);

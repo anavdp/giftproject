@@ -29,7 +29,7 @@ public class UserController {
         return "newUser";
     }
 
-    @PostMapping(value="/users")
+    @PostMapping(value="/newUser")
     public String createUser(@ModelAttribute @Valid UserDTO userDTO, Model model) {
         User user = converter.convertDTOtoEntity(userDTO);
         user = userService.createUser(user);

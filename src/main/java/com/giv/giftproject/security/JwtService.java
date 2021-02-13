@@ -60,4 +60,5 @@ public class JwtService {
         Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
         return (Collection<? extends GrantedAuthority>) claims.get(AUTHORITIES);
     }
+
 }
