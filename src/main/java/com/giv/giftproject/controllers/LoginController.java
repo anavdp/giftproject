@@ -1,4 +1,4 @@
-package com.giv.giftproject;
+package com.giv.giftproject.controllers;
 
 import com.giv.giftproject.security.AuthenticationRequest;
 import com.giv.giftproject.security.AuthenticationResponse;
