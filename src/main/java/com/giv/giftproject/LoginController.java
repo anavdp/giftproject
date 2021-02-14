@@ -36,7 +36,7 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/home")
     public AuthenticationResponse createToken(@RequestParam Map<String,String> ar) throws Exception {
         final String username = ar.get("username");
         final String password = ar.get("password");
