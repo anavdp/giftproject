@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 @Controller
@@ -41,6 +43,11 @@ public class UserController {
         return "login";
     }
 
-
+    @GetMapping(value="/users")
+    public String getuserList(Model model) {
+        final List<User> userList = userService.searchUsers();
+        model.addAttribute("users", userList);
+        return "users";
+    }
 
 }

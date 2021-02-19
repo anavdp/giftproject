@@ -1,4 +1,5 @@
 package com.giv.giftproject.services;
+
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.domain.model.dto.UserDTO;
 import com.giv.giftproject.repositories.UserRepository;
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,6 +34,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(user);
 	}
 
-
+    @Override
+    public List<User> searchUsers() {
+        return (List<User>) userRepository.findAll();
+    }
 
 }
