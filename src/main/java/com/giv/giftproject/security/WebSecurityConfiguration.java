@@ -29,7 +29,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers("/resources/**", "/login", "/signup", "/home", "/newUser").permitAll()
+                .authorizeRequests().antMatchers("/resources/**", "/login", "/signup", "/home", "/newUser", "/users").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").failureUrl("/error")

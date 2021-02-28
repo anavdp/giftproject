@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -39,9 +40,12 @@ public class UserController {
     }
 
     @GetMapping(value="/users")
-    public String getuserList(Model model) {
+    public String getUserList(Model model) {
         final List<User> userList = userService.searchUsers();
-        model.addAttribute("users", userList);
+        List<UserDTO> userDTOs = userList.stream()
+            .map(user -> converter.convertEntityToDTO(user))
+            .collect(Collectors.toList());
+        model.addAttribute("users", userDTOs);
         return "users";
     }
 
