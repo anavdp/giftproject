@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Gift</title>
+</head>
+<body>
+<form action="#"  th:action="@{/gifts}" th:object="${gift}"  method="post" id="frmGift">
+    <label for="description">Description</label>
+    <input id="description" th:field="*{description}" placeholder="Description" required type="text"><br>
+    <label for="image">Image</label>
+    <input id="image" th:field="*{imageUrl}" placeholder="Image Url" type="text"><br>
+    <label for="price">Price</label>
+    <input id="price" th:field="*{price}" placeholder="Price" type="number" step=".01" min="0"><br>
+    <label for="url">Url</label>
+    <input id="url" th:field="*{url}" placeholder="Gift Url" required type="text"><br>
+    <input type="submit" value="Create Gift">
+</form>
+</body>
+</html>
