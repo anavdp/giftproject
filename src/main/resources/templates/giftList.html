@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title th:text="${title}"></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>imageUrl</th>
+        <th>Price</th>
+        <th>Url</th>
+    </tr>
+    <tr th:each="gift: ${gifts}">
+        <td th:text="${gift.description}" />
+        <td th:text="${gift.imageUrl}" />
+        <td th:text="${gift.price}" />
+        <td th:text="${gift.url}" />
+    </tr>
+</table>
+</body>
+</html>

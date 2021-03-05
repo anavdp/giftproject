@@ -30,6 +30,8 @@ public class Gift {
         this.url = url;
     }
 
+    public Gift(){}
+
     public String getDescription() {
         return description;
     }

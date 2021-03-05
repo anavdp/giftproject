@@ -1,5 +1,8 @@
 package com.giv.giftproject;
 
+import java.util.List;
+
+import com.giv.giftproject.domain.model.Gift;
 import com.giv.giftproject.domain.model.dto.GiftDTO;
 import com.giv.giftproject.services.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +30,13 @@ public class GiftController {
         model.addAttribute("title", "Gifts");
         model.addAttribute("gift", gift);
         return "wishList";
+    }
+
+    @GetMapping(value="/gifts")
+    public String getGiftList(Model model) {
+        final List<Gift> giftList = giftService.searchGifts();
+        model.addAttribute("title", "Gift List");
+        model.addAttribute("gifts", giftList);
+        return "giftList";
     }
 }

@@ -1,5 +1,7 @@
 package com.giv.giftproject.services;
 
+import java.util.List;
+
 import com.giv.giftproject.domain.model.Gift;
 import com.giv.giftproject.domain.model.dto.GiftDTO;
 import com.giv.giftproject.repositories.GiftRepository;
@@ -21,5 +23,10 @@ public class GiftServiceImpl implements GiftService {
             dto.getUrl()
             );
         return giftRepository.save(gift);
+    }
+
+    @Override
+    public List<Gift> searchGifts() {
+        return (List<Gift>) giftRepository.findAll();
     }
 }
