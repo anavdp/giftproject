@@ -13,6 +13,7 @@ repositories {
 }
 
 dependencies {
+	runtimeOnly "mysql:mysql-connector-java"
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -23,7 +24,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	compile 'org.modelmapper:modelmapper:2.3.9'
-	runtimeOnly "mysql:mysql-connector-java"
 	compile group: 'org.passay', name: 'passay', version: '1.6.0'
 	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 }
