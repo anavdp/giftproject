@@ -1,18 +1,17 @@
 package com.giv.giftproject.controllers;
 
 import javax.validation.Valid;
-
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.domain.model.dto.UserDTO;
 import com.giv.giftproject.services.Converter;
 import com.giv.giftproject.services.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -39,5 +38,11 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping(value="/users")
+    public String getuserList(Model model) {
+        final List<User> userList = userService.searchUsers();
+        model.addAttribute("users", userList);
+        return "users";
+    }
 
 }
