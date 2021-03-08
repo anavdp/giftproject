@@ -9,13 +9,11 @@
 <body>
     <table>
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Lastname</th>
             <th>email</th>
         </tr>
         <tr th:each="user: ${users}">
-            <td th:text="${user.id}" />
             <td th:text="${user.name}" />
             <td th:text="${user.lastname}" />
             <td th:text="${user.email}" />
