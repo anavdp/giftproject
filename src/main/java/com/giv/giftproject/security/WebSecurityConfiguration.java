@@ -27,13 +27,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
+                .addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers("/resources/**", "/login", "/signup", "/home", "/newUser", "/users").permitAll()
+                .authorizeRequests().antMatchers("/resources/**", "/login", "/signup", "/home", "/newUser", "/principal").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").failureUrl("/error")
-                .and().addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+                .formLogin().loginPage("/login").failureUrl("/error");
     }
 
     @Override

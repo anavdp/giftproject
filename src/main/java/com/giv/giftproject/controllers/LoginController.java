@@ -9,14 +9,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class LoginController {
@@ -36,10 +35,11 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping("/home")
-    public AuthenticationResponse createToken(@RequestParam Map<String,String> ar) throws Exception {
-        final String username = ar.get("username");
-        final String password = ar.get("password");
+    @RequestMapping("/home")
+    @ResponseBody
+    public AuthenticationResponse createToken(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        final String username = request.getParameter("username");
+        final String password = request.getParameter("password");
 
         final AuthenticationRequest authenticationRequest = new AuthenticationRequest(username, password);
         try {
@@ -54,4 +54,10 @@ public class LoginController {
         String token = jwtService.createToken(userDetails);
         return new AuthenticationResponse(token);
     }
+
+    @RequestMapping("/principal")
+    public String toPrincipal(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return "/home";
+    }
+
 }
