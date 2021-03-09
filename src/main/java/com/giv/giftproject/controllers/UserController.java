@@ -1,18 +1,21 @@
 package com.giv.giftproject.controllers;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
+
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.domain.model.dto.UserDTO;
-import com.giv.giftproject.services.Converter;
+import com.giv.giftproject.services.converters.UserConverter;
 import com.giv.giftproject.services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -21,7 +24,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private Converter converter;
+    private UserConverter converter;
 
     @GetMapping(value="/signup")
     public String userForm(Model model) {

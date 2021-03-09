@@ -2,7 +2,7 @@ package com.giv.giftproject.security;
 
 import com.giv.giftproject.domain.model.User;
 import com.giv.giftproject.repositories.UserRepository;
-import com.giv.giftproject.services.Converter;
+import com.giv.giftproject.services.converters.UserConverter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +17,7 @@ public class MyUserDetailService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Autowired
-    private Converter converter;
+    private UserConverter converter;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
