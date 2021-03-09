@@ -17,7 +17,7 @@ public class GiftConverter {
         return modelMapper.map(giftDTO, Gift.class);
     }
 
-    public GiftDTO convertEntitytoDTO(Gift gift){
+    public GiftDTO convertEntityToDTO(Gift gift){
         return modelMapper.map(gift, GiftDTO.class);
     }
 }

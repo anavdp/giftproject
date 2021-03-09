@@ -3,8 +3,8 @@ package com.giv.giftproject.services;
 import java.util.List;
 
 import com.giv.giftproject.domain.model.Gift;
-import com.giv.giftproject.domain.model.dto.GiftDTO;
 import com.giv.giftproject.repositories.GiftRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +15,7 @@ public class GiftServiceImpl implements GiftService {
     private GiftRepository giftRepository;
 
     @Override
-    public Gift createGift(GiftDTO dto) {
-        Gift gift = new Gift(
-            dto.getDescription(),
-            dto.getImageUrl(),
-            dto.getPrice(),
-            dto.getUrl()
-            );
+    public Gift createGift(Gift gift) {
         return giftRepository.save(gift);
     }
 

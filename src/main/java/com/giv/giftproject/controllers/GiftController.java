@@ -31,18 +31,20 @@ public class GiftController {
     }
 
     @PostMapping(value="/gifts")
-    public String createGift(@ModelAttribute GiftDTO gift, Model model) {
-        giftService.createGift(gift);
+    public String createGift(@ModelAttribute GiftDTO giftDTO, Model model) {
+        Gift gift = converter.convertDTOtoEntity(giftDTO);
+        gift = giftService.createGift(gift);
+        giftDTO = converter.convertEntityToDTO(gift);
         model.addAttribute("title", "Gifts");
-        model.addAttribute("gift", gift);
-        return "giftList";
+        model.addAttribute("gift", giftDTO);
+        return "redirect:gifts";
     }
 
     @GetMapping(value="/gifts")
     public String getGiftList(Model model) {
         final List<Gift> giftList = giftService.searchGifts();
         List<GiftDTO> giftDTOs = giftList.stream()
-            .map(gift -> converter.convertEntitytoDTO(gift))
+            .map(gift -> converter.convertEntityToDTO(gift))
             .collect(Collectors.toList());
         model.addAttribute("title", "Gift List");
         model.addAttribute("gifts", giftDTOs);
