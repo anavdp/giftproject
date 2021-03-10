@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -73,6 +74,9 @@ public class User {
 
     @ManyToOne
     private Role role;
+
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<WishList> wishLists;
 
     public User(){
         this.creationDate = new Date();

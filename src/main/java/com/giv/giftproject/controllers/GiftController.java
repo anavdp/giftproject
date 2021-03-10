@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import com.giv.giftproject.domain.model.Gift;
 import com.giv.giftproject.domain.model.dto.GiftDTO;
-import com.giv.giftproject.services.converters.GiftConverter;
 import com.giv.giftproject.services.GiftService;
+import com.giv.giftproject.services.converters.GiftConverter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
