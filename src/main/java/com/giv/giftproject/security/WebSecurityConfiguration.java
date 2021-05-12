@@ -29,13 +29,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers("/resources/**", "/login", "/signup", "/home", "/newUser", "/principal").permitAll()
+                .authorizeRequests().antMatchers("/resources/**", "/login", "/signup", "/home", "/newUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").failureUrl("/error")
                 .and()
-                .addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
-                ;
+                .addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

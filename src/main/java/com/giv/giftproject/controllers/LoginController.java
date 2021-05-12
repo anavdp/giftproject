@@ -58,9 +58,5 @@ public class LoginController {
         return "home";
     }
 
-    @RequestMapping("/principal")
-    public String toPrincipal(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return "home";
-    }
 
 }
