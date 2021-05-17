@@ -1,6 +1,7 @@
 package com.giv.giftproject.domain.model;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class WishList {
@@ -33,7 +35,8 @@ public class WishList {
     private Date modificationDate;
 
     @ManyToMany
-    private List<User> users;
+    @NotEmpty(message = "The wishlist must be owned at least by one user")
+    private List<User> users = new ArrayList<>();
 
     @ManyToMany
     private List<Gift> gifts;
